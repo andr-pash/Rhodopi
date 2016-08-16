@@ -1,0 +1,37 @@
+.nav-menu
+  position: fixed
+  height: 100vh
+  width: 100vw
+  background: linear-gradient(180deg, rgba(#02C0FF,0.7) 0%, rgba(#fff, 0.2) 10%, rgba(#fff, 0.95) 100%)white
+  transform: translateY(-100vh)
+  transition: all 300ms ease-in-out
+
+.nav-menu.is-open
+  transform: translateY(0)
+
+.nav-menu__btn
+  position: fixed
+  top: 20px
+  right: 20px
+  height: 40px
+  width: 40px
+  z-index: 1000
+  * 
+    transform-origin: 50% 50% 
+    transition: all 0.2s ease-in-out
+
+.nav-menu__btn.is-open 
+  .top,
+  .bottom
+    opacity: 0 
+
+  .middle1,
+  .middle2
+    stroke: black
+    fill: black
+  
+  .middle1
+    transform: rotate(45deg)
+
+  .middle2
+    transform: rotate(-45deg)

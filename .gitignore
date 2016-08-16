@@ -1,0 +1,9 @@
+#SASS
+.sass-cache
+
+# designs
+/assets
+
+# node
+/node_modules
+
