@@ -1,3 +1,13 @@
+@import 'https://fonts.googleapis.com/css?family=Muli|Roboto'
+@import 'https://fonts.googleapis.com/css?family=Sacramento'
+@import 'https://fonts.googleapis.com/css?family=Dosis|Josefin+Sans'
+
+//general UI element stylings
+// @import "../animate.css"
+@import "./nav-menu"
+@import "./carousel"
+@import "./book-btn"
+
 html,
 body,
 h1,
@@ -5,79 +15,122 @@ h2,
 h3
 	margin: 0
 	padding: 0
-	font-family: 'Lato'
-	font-family: 'Helvetica', sans-serif
+	font-family: 'Muli', sans-serif
 
 p
 	margin: 0 10px
+	font-family: 'Josefin Sans', sans-serif
 
 section
 	min-height: 100vh
 	position: relative
 
 
-//general UI element stylings
-// @import "../animate.css"
-@import "./nav-menu"
-@import "./carousel"
+
+.theme
+	z-index: 1	
+	&--blue
+		background: #BDE8F7 repeating-linear-gradient(-90deg, rgba(#DCF7FF, 0.5) ,rgba(#DCF7FF, 0.5) 5px, #BDE8F7 0, #BDE8F7 40px)
+			size: 20px 20px
+
+	&--eggshell
+
+			
+	&:before
+		content: ''
+		display: block
+		position: absolute
+		background: inherit
+		height: calc(100% + 20vh)
+		width: 100%
+	&--blue:before	
+		transform-origin: top right
+		transform: skewY(15deg)
+		border-top: 5px solid rgba(#fff, 0.5)
+		box-shadow: 0 0 30px rgba(#000, 0.6)
+		z-index: -1
+		@media(min-width: 430px)
+			transform: skewY(8deg)
+		@media(min-width: 770px)
+			transform: skewY(5deg)
+
+	&--eggshell:before
+
 
 .section-title
-	color: #6C858E
-	padding: 5vw 10vw
-	padding-top: 0
-	font-size: 30px
+	color: rgba(#244652, 0.5)
+	margin-bottom: -15%
+	margin-top: 30%
+	padding: 0 20px
+	font-size: 58px
 	font-weight: 300
+	letter-spacing: -4px
+	line-height: 36px
+
+
+.section-panel
+	width: 100%
+	margin: 0 20px
+	padding: 20px
+	display: flex
+
 
 
 // hero
 .hero
 	height: 120vh
-	z-index: 0
+	// z-index: 0
 	background: 
 		image: linear-gradient(180deg, rgba(#02C0FF,0.7) 0%, rgba(#fff, 0.2) 10%, rgba(#fff, 0.95) 100%), url('../img/hero_bg.jpg') 
 		size: cover
-		attachment: fixed
 
 	&__title,
 	&__subtitle,
 		color: white
 		padding-left: 20px
 		font-weight: 100
-		font-variant: small-caps
+
 
 	&__title
-		padding-top: 30vh
-		font-size: 42px
+		padding-top: 20vh
+		font-size: 48px
+		font-variant: small-caps
 
 	&__subtitle
-		font-size: 24px
+		font-size: 36px
+		font-family: 'Sacramento', cursive
 		margin: 0
 		margin-top: 10px
 
-.house
-	background: #BDE8F7 repeating-linear-gradient(-90deg, rgba(#DCF7FF, 0.5) ,rgba(#DCF7FF, 0.5) 5px, #BDE8F7 0, #BDE8F7 40px)
-		size: 20px 20px
-	z-index: 1
-// .house *
-// 	z-index: 0	
 
-.house:before
-	content: ''
-	display: block
-	position: absolute
-	background: inherit
-	backface-visibility: hidden
-	height: calc(100% + 20vh)
-	width: 100%
-	transform-origin: top right
-	transform: skewY(15deg)
-	border-top: 5px solid rgba(#fff, 0.5)
-	box-shadow: 0 0 30px rgba(#000, 0.6)
-	z-index: -1
-	@media(min-width: 430px)
-		transform: skewY(8deg)
-	@media(min-width: 770px)
-		transform: skewY(5deg)
+
+
+// // 
+// .house
+// 	background: #BDE8F7 repeating-linear-gradient(-90deg, rgba(#DCF7FF, 0.5) ,rgba(#DCF7FF, 0.5) 5px, #BDE8F7 0, #BDE8F7 40px)
+// 		size: 20px 20px
+// 	z-index: 1
+
+// .house:before
+// 	content: ''
+// 	display: block
+// 	position: absolute
+// 	background: inherit
+// 	backface-visibility: hidden
+// 	height: calc(100% + 20vh)
+// 	width: 100%
+// 	transform-origin: top right
+// 	transform: skewY(15deg)
+// 	border-top: 5px solid rgba(#fff, 0.5)
+// 	box-shadow: 0 0 30px rgba(#000, 0.6)
+// 	z-index: -1
+// 	@media(min-width: 430px)
+// 		transform: skewY(8deg)
+// 	@media(min-width: 770px)
+// 		transform: skewY(5deg)
+
+.area .section-title
+	font-size: 50px
 
 
 .paragraphen-wrap
@@ -86,40 +139,5 @@ section
 	@media(min-width: 620px)
 		flex-wrap: nowrap
 		p 
-			width: 50%	
-
-.btn-book
-	position: fixed
-	bottom: 30px
-	left: 50%
-	width: calc(100vw - 2*20px)
-	height: 40px
-	transform: translateX(-50%)
-	text-align: center
-	color: white
-	background: linear-gradient(180deg, #02C0FF  0%, #12627D  100%)
-	border:
-		radius: 0 5px 5px 5px
-		style: solid
-		width: 2px
-		color: #BDE8F7
-	box-shadow: 5px 5px 10px rgba(0,0,0,0.5)
-	box-sizing: border-box
-	z-index: 1000 
-
-
-.btn-book:before
-	content: ''
-	display: block
-	position: absolute
-	transform-origin: bottom left
-	transform: translate3d(0, -99%, 0) scale(1)
-	transition: all 0.4s ease-in-out
-	width: 100%
-	height: 182px
-	background: url('../img/house-vector.svg') no-repeat
-		size: contain
-
-.btn-book.small:before
-	transform: translate3d(0, -99%, 0) scale(0.25)		
+			width: 50%		
 

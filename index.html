@@ -5,13 +5,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>TITLE</title>
+    <title>Blaues Ferienhaus "Frixos"</title>
     <link rel="stylesheet" href="css/main.css">
     <script type="text/javascript" src="js/jquery-2.2.0.min.js"></script>
     <script type="text/javascript" src="js/jquery-ui.min.js"></script>
     <script type="text/javascript" src="js/snap.svg-min.js"></script>
     <script type="text/javascript" src="js/main.js"></script>
 </head>
+
+
 
 <body>
     <!-- Navigation Mobile -->
@@ -32,16 +34,37 @@
             <rect x="1" y="1" height="58" width="58" rx="15px" ry="15px" style="stroke:#fff;stroke-width:2;fill:none;" />
         </g>
     </svg>
-    <div class="nav-menu hidden" id="nav-menu">
-        <ul>
-            <li>Home</li>
-            <li>Das Haus</li>
-            <li>Umgebung und Ausflüge</li>
-            <li>Anreise</li>
+
+
+    <div class="nav-menu" id="nav-menu">
+        <ul class="nav-menu__list">
+            <a class="nav-menu__item active" href="#home">
+                <li>Home</li>
+            </a>
+            <a class="nav-menu__item" href="#house">
+                <li>Das Haus</li>
+            </a>
+            <a class="nav-menu__item" href="#area">
+                <li>Umgebung und Ausflüge</li>
+            </a>
+            <a class="nav-menu__item" href="#connection">
+                <li>Anreise</li>
+            </a>
+            <a class="nav-menu__item" href="#contact">
+                <li>Kontakt</li>
+            </a>
         </ul>
+        <svg class="nav-menu__pointer" width="100%" height="100%" viewBox="0 0 12 13" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.41421;">
+                <path d="M1.795,6.221l8.137,4.174l0,-8.348l-8.137,4.174Z" style="fill:#0093c4;stroke-width:2px;stroke:#fff;" />
+        </svg>
     </div>
     <!-- Navigation Mobile -->
+
+
+
     <div class="btn-book">Book Now!</div>
+
+
     <section class="hero">
         <h1 class="hero__title">Haus Frixos</h2>
         <h4 class="hero__subtitle">Urlaub nahe den Rhodopen</h4>
@@ -49,10 +72,43 @@
 
 
 
-    <section class="house">
-        <h2 class="section-title skew">Das Haus</h2>
+    <section class="house theme theme--blue" id='house'>
+
+        <h2 class="section-title">Das Haus</h2>
+
+        <div class="section-panel section-panel--gold">
+            
+            <div class="carousel-wrap">
+                <div class="carousel" id="carousel">
+                    <div class="carousel__btn carousel__btn--prev carousel__prev"></div>
+                    <div class="carousel__btn carousel__btn--next carousel__next"></div>
+                    <div class="carousel__list">
+                    </div>
+                </div>                
+            </div>
+        </div>
+
         
-        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ <!--          
         <div class="carousel-wrap">
             <div class="carousel" id="carousel">
                 <div class="carousel__btn carousel__btn--prev carousel__prev"></div>
@@ -74,25 +130,57 @@
             <p>
                  Zum Haus gehört zudem ein ca. 800m2 großes Grund- stück mit verschiedenen kleinen Obst- und Olivenbäumen, die gerne geerntet werden dürfen. Je nach Saison findet man unter anderem Birne, Apfel, Feige, Kaki und Granatapfel.
             </p>
-        </div>    
+        </div>     -->
 
     </section>
 
 
 
-    <section class="region">
+    <section class="area theme theme--eggshell" id="area">
 
+        <h2 class="section-title">Umgebung <br/> &amp; Versorgung</h2>
+        
+        <div class="section-panel section-panel--blue">
+            
+
+
+        </div>
     </section>
 
 
 
 
-    <section class="transportation">
+    <section class="connection theme theme--blue" id="connection">
 
-    </section>
-    <section class="contact">
+        <h2 class="section-title">Anreise</h2>
+        
+        <div class="section-panel section-panel--gold">
+            
 
+            
+        </div>
     </section>
+
+
+
+    <section class="contact theme theme--eggshell" id="contact">
+
+        <h2 class="section-title">Kontakt</h2>
+        
+        <div class="section-panel section-panel--blue">
+            
+
+            
+        </div>
+    </section>
+
+
+
+
+    <section class="footer" id="footer">
+        
+    </section>
+
 
 </body>
 

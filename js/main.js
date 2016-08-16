@@ -1,10 +1,35 @@
+'use strict';
+
 $('document').ready(function () {
+
+    // open/close mobile navigation
     $('#nav-menu__btn').on('click', function () {
-        console.log('open');
         $('#nav-menu').toggleClass('is-open');
         $('#nav-menu__btn').toggleClass('is-open');
     });
 
+    // close mobile nav when link is clicked + set active class
+    $('.nav-menu__item').on('click', function () {
+
+        $('.nav-menu__item').removeClass('active');
+        $(this).addClass('active');
+        setPointer();
+        setTimeout(function () {
+            $('#nav-menu').removeClass('is-open');
+            $('#nav-menu__btn').removeClass('is-open');
+        }, 400);
+    });
+
+    //position pointer on navigation
+    function setPointer() {
+        var ul = $('.nav-menu__list').position();
+        var active = $('.active').position();
+        var newPos = ul.top + active.top - 4;
+        console.log(ul, active, newPos);
+        $('.nav-menu__pointer').css('top', newPos);
+    }
+
+    // shrink booking button on scroll
     $(window).scroll(function () {
         var offSet = window.pageYOffset;
         if (offSet > 300) {
@@ -76,12 +101,15 @@ $('document').ready(function () {
             pos = imgSrc.length - 1;
         }
     });
+
+    setPointer();
 });
 
 $(window).load(function () {
 
-    $('.carousel__item').draggable({ revert: true,
-        drag: function () {
+    $('.carousel__item').draggable({
+        revert: true,
+        drag: function drag() {
             console.log('drag');
         }
 

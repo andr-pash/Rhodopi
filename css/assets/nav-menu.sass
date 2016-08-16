@@ -1,13 +1,100 @@
 .nav-menu
   position: fixed
   height: 100vh
-  width: 100vw
-  background: linear-gradient(180deg, rgba(#02C0FF,0.7) 0%, rgba(#fff, 0.2) 10%, rgba(#fff, 0.95) 100%)white
-  transform: translateY(-100vh)
-  transition: all 300ms ease-in-out
+  width: 300px
+  background: #D8D8D8
+  box-shadow: 0 0 0 5000px rgba(0,0,0,0.6), 0 0 0 5px rgba(#fff, 0.8), 0 10px 15px #000
+  top: 0
+  right: 0
+  transform: translateX(300px) scaleX(0.5)
+  opacity: 0.01
+  transition: all 250ms cubic-bezier(0.37, 0.07, 0.24, 1.14)
+  z-index: 1100
+
+  &:before
+    content: ''
+    display: block
+    position: absolute
+    top: 0
+    width: 100%
+    height: 80px
+    background: radial-gradient(closest-side, #005D7E 0, #005D7E 20%, transparent 0) #0093C4
+      size: 20px 20px
+    box-shadow: 0 0 15px #000
+
+  ul
+    width: 220px
+    height: 300px
+    position: relative
+    top: 50%
+    transform: translateY(-50%)
+    left: 0
+    right: 0
+    margin: auto 60px auto 30px
+    box-sizing: border-box
+    list-style-type: none
+    display: flex
+    flex-direction: column
+    justify-content: space-between
+    padding: 0
+    // li
+    a
+      position: relative
+      margin-bottom: 24px
+      font-family: 'Josefin Sans'
+      font-size: 24px
+      font-weight: 100
+      color: #0093C4
+      text-decoration: none
+      text-shadow:  0 0 4px #fff
+      
+      &:before, &:after
+        content: ''
+        display: block
+        box-sizing: border-box
+        position: absolute
+
+      &:after
+        top: 0
+        left: -40px
+        width: 20px
+        height: 20px
+        border:
+          radius: 50%
+          style: solid
+          color: #fff
+          width: 3px
+        background: #0093C4
+        // transform: scale(1.05)
+
+      &:first-child
+        &:before
+          height: 260px
+          width: 4px
+          background: #fff
+          top: 10px
+          left: -32px
+
+.nav-menu__pointer
+  height: 25px
+  width: 25px
+  position: absolute
+  top: 0
+  left: -40px
+  transform: rotateZ(180deg)
+  transition: top 300ms ease-in-out
+  animation: hover 1s linear infinite alternate
+
+  @keyframes hover
+    0%
+      transform: rotateZ(180deg) translateX(0)
+    100%
+      transform: rotateZ(180deg) translateX(-5px)
+
 
 .nav-menu.is-open
-  transform: translateY(0)
+  transform: translateX(40px) scaleX(1)
+  opacity: 1
 
 .nav-menu__btn
   position: fixed
@@ -15,10 +102,10 @@
   right: 20px
   height: 40px
   width: 40px
-  z-index: 1000
+  z-index: 1500
   * 
     transform-origin: 50% 50% 
-    transition: all 0.2s ease-in-out
+    transition: all 0.25s cubic-bezier(0.37, 0.07, 0.24, 1.34)
 
 .nav-menu__btn.is-open 
   .top,
