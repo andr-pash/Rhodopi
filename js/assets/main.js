@@ -53,7 +53,7 @@ const descrArea = {
 
 
 const imagesCon = [
-        './img/connection/gr-map.tiff'
+        './img/connection/gr-map.jpg'
 ]
 
 
