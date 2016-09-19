@@ -76,6 +76,7 @@ $('document').ready(function () {
         $('.nav-menu__pointer').css('top', newPos);
     }
 
+    // soft scroll
     $(function () {
         $('a[href*="#"]:not([href="#"])').click(function () {
             if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
@@ -116,6 +117,7 @@ $('document').ready(function () {
         }
     });
 
+    // counters for carousels
     var posHouse = 0;
     var posArea = 0;
     var posCon = 0;
@@ -157,6 +159,7 @@ $('document').ready(function () {
     // Area Carousel Logic
 
     $('#carousel2 .carousel__main').css('background-image', 'url(' + imagesArea[currentArea][0] + ')');
+    $('#');
 
     $('#carousel2 .carousel__btn--prev').click(function () {
         posArea--;
