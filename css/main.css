@@ -245,11 +245,12 @@
   stroke-width: 10; }
 
 .btn {
+  font-family: "Josefin Sans", sans-serif;
   height: 40px;
   text-align: center;
   color: white;
   background: linear-gradient(180deg, #02C0FF 0%, #12627D 100%);
-  border-radius: 0px;
+  border-radius: 3px;
   border-style: solid;
   border-width: 2px;
   border-color: #BDE8F7;
@@ -257,16 +258,18 @@
   box-sizing: border-box; }
   .btn__book {
     position: fixed;
-    border-radius-top-left: 0;
+    border-top-left-radius: 0;
     bottom: 30px;
     left: 50%;
     width: calc(100vw - 2*20px);
+    font-size: 20px;
+    font-weight: 100;
+    line-height: 40px;
     -webkit-transform: translateX(-50%);
     transform: translateX(-50%);
     transition: opacity 500ms;
     z-index: 1000; }
   .btn__submit {
-    font-family: "Josefin Sans", sans-serif;
     box-shadow: none; }
 
 .btn__book:before {
@@ -275,14 +278,15 @@
   position: absolute;
   -webkit-transform-origin: bottom left;
   transform-origin: bottom left;
-  -webkit-transform: translate3d(0, -99%, 0) scale(1);
-  transform: translate3d(0, -99%, 0) scale(1);
+  -webkit-transform: translate3d(0, -100%, 0) scale(1);
+  transform: translate3d(0, -100%, 0) scale(1);
   transition: all 0.4s ease-in-out;
   width: 100%;
-  height: 182px;
+  height: 250px;
   background-image: url("../img/house.png");
   background-repeat: no-repeat;
   background-size: contain;
+  background-position: bottom left;
   z-index: -1; }
 
 .btn__book.small:before {
@@ -587,18 +591,18 @@ label {
     -ms-flex-direction: row;
     flex-direction: row; }
     .house .section-panel__tile {
-      -webkit-flex-basis: 50%;
       -ms-flex-preferred-size: 50%;
+      -webkit-flex-basis: 50%;
       flex-basis: 50%;
       -webkit-flex-grow: 1;
       -ms-flex-positive: 1;
       flex-grow: 1;
-      -webkit-flex-shrink: 0;
       -ms-flex-negative: 0;
+      -webkit-flex-shrink: 0;
       flex-shrink: 0; }
       .house .section-panel__tile:first-child {
-        -webkit-flex-basis: 100%;
         -ms-flex-preferred-size: 100%;
+        -webkit-flex-basis: 100%;
         flex-basis: 100%; }
 
   .contact .section-title::before {

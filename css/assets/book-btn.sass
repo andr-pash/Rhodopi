@@ -1,28 +1,30 @@
 .btn
-	&__book
-		position: fixed
-		border-radius-top-left: 0
-		bottom: 30px
-		left: 50%
-		width: calc(100vw - 2*20px)
-		transform: translateX(-50%)
-		transition: opacity 500ms
-		z-index: 1000
+	font-family: 'Josefin Sans', sans-serif
 	height: 40px
 	text-align: center
 	color: white
 	background: linear-gradient(180deg, #02C0FF  0%, #12627D  100%)
 	border:
-		radius: 0px
+		radius: 3px
 		style: solid
 		width: 2px
 		color: #BDE8F7
 	box-shadow: 5px 5px 10px rgba(0,0,0,0.5)
 	box-sizing: border-box
-
+	&__book
+		position: fixed
+		border-top-left-radius: 0
+		bottom: 30px
+		left: 50%
+		width: calc(100vw - 2*20px)
+		font-size: 20px
+		font-weight: 100
+		line-height: 40px
+		transform: translateX(-50%)
+		transition: opacity 500ms
+		z-index: 1000
 
 	&__submit
-		font-family: 'Josefin Sans', sans-serif
 		box-shadow: none
 
 
@@ -31,14 +33,15 @@
 	display: block
 	position: absolute
 	transform-origin: bottom left
-	transform: translate3d(0, -99%, 0) scale(1)
+	transform: translate3d(0, -100%, 0) scale(1)
 	transition: all 0.4s ease-in-out
 	width: 100%
-	height: 182px
+	height: 250px
 	background:
 		image: url('../img/house.png')
 		repeat: no-repeat
 		size: contain
+		position: bottom left
 	z-index: -1
 
 .btn__book.small:before
