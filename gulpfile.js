@@ -8,7 +8,13 @@ var gulp = require('gulp'),
   uglify = require('gulp-uglify'),
   sourcemaps = require('gulp-sourcemaps'),
   gutil = require('gulp-util');
-
+//   imagemin = require('gulp-imagemin');
+//
+// gulp.task('imagemin', function(){
+//       gulp.src('./imgsrc/*')
+//           .pipe(imagemin())
+//           .pipe(gulp.dest('./img'));
+//   });
 
 gulp.task('babel', function () {
   return gulp.src('./js/assets/main.js')
