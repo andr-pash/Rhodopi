@@ -280,7 +280,7 @@
   transition: all 0.4s ease-in-out;
   width: 100%;
   height: 182px;
-  background-image: url("../img/house-vector.svg");
+  background-image: url("../img/house.png");
   background-repeat: no-repeat;
   background-size: contain;
   z-index: -1; }
