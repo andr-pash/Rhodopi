@@ -46,7 +46,7 @@ var descrArea = {
     }
 };
 
-var imagesCon = ['./img/connection/gr-map.tiff'];
+var imagesCon = ['./img/connection/gr-map.jpg'];
 
 $('document').ready(function () {
 
