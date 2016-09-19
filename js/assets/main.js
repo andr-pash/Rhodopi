@@ -10,12 +10,12 @@ const imagesHouse = {
 
 
 const imagesArea = {
-        komotini: ['../img/area/Komotini.jpg'],
-        rhodopen: ['../img/area/Rodopen.jpg'],
-        birds: ['../img/area/Birds.jpg'],
-        nature: ['../img/area/Nature.jpg'],
-        beaches: ['../img/area/Beaches.jpg'],
-        samothraki: ['../img/area/Samothraki.jpg'],
+        komotini: ['./img/area/Komotini.jpg'],
+        rhodopen: ['./img/area/Rodopen.jpg'],
+        birds: ['./img/area/Birds.jpg'],
+        nature: ['./img/area/Nature.jpg'],
+        beaches: ['./img/area/Beaches.jpg'],
+        samothraki: ['./img/area/Samothraki.jpg'],
 }
 
 
@@ -53,7 +53,7 @@ const descrArea = {
 
 
 const imagesCon = [
-        '../img/connection/gr-map.tiff'
+        './img/connection/gr-map.tiff'
 ]
 
 

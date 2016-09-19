@@ -587,18 +587,18 @@ label {
     -ms-flex-direction: row;
     flex-direction: row; }
     .house .section-panel__tile {
-      -ms-flex-preferred-size: 50%;
       -webkit-flex-basis: 50%;
+      -ms-flex-preferred-size: 50%;
       flex-basis: 50%;
       -webkit-flex-grow: 1;
       -ms-flex-positive: 1;
       flex-grow: 1;
-      -ms-flex-negative: 0;
       -webkit-flex-shrink: 0;
+      -ms-flex-negative: 0;
       flex-shrink: 0; }
       .house .section-panel__tile:first-child {
-        -ms-flex-preferred-size: 100%;
         -webkit-flex-basis: 100%;
+        -ms-flex-preferred-size: 100%;
         flex-basis: 100%; }
 
   .contact .section-title::before {
