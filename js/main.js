@@ -11,12 +11,12 @@ var imagesHouse = {
 };
 
 var imagesArea = {
-    komotini: ['../img/area/Komotini.jpg'],
-    rhodopen: ['../img/area/Rodopen.jpg'],
-    birds: ['../img/area/Birds.jpg'],
-    nature: ['../img/area/Nature.jpg'],
-    beaches: ['../img/area/Beaches.jpg'],
-    samothraki: ['../img/area/Samothraki.jpg']
+    komotini: ['./img/area/Komotini.jpg'],
+    rhodopen: ['./img/area/Rodopen.jpg'],
+    birds: ['./img/area/Birds.jpg'],
+    nature: ['./img/area/Nature.jpg'],
+    beaches: ['./img/area/Beaches.jpg'],
+    samothraki: ['./img/area/Samothraki.jpg']
 };
 
 var descrArea = {
@@ -46,7 +46,7 @@ var descrArea = {
     }
 };
 
-var imagesCon = ['../img/connection/gr-map.tiff'];
+var imagesCon = ['./img/connection/gr-map.tiff'];
 
 $('document').ready(function () {
 
