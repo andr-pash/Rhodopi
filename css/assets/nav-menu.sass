@@ -3,7 +3,7 @@
   height: 100vh
   width: 300px
   background: #D8D8D8
-  box-shadow: 0 0 0 5000px rgba(0,0,0,0.6), 0 0 0 5px rgba(#fff, 0.8), 0 10px 15px #000
+  box-shadow: 0 0 0 5000px rgba(0,0,0,0.6), 0 10px 15px #000
   top: 0
   right: 0
   transform: translateX(300px) scaleX(0.5)
@@ -47,7 +47,7 @@
       color: #0093C4
       text-decoration: none
       text-shadow:  0 0 4px #fff
-      
+
       &:before, &:after
         content: ''
         display: block
@@ -103,22 +103,35 @@
   height: 40px
   width: 40px
   z-index: 1500
-  * 
-    transform-origin: 50% 50% 
+  *
+    transform-origin: 50% 50%
     transition: all 0.25s cubic-bezier(0.37, 0.07, 0.24, 1.34)
 
-.nav-menu__btn.is-open 
+.nav-menu__btn.is-open
   .top,
   .bottom
-    opacity: 0 
+    opacity: 0
 
   .middle1,
   .middle2
     stroke: black
     fill: black
-  
+
   .middle1
     transform: rotate(45deg)
 
   .middle2
     transform: rotate(-45deg)
+
+
+@media(min-width: 1200px)
+  .nav-menu
+    transform: translateX(100px)
+    opacity: 1
+    box-shadow: none
+    background: none
+    &:before
+      display: none
+
+  .nav-menu__btn
+    display: none

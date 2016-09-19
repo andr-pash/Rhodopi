@@ -1,9 +1,28 @@
-@import 'https://fonts.googleapis.com/css?family=Muli|Roboto'
-@import 'https://fonts.googleapis.com/css?family=Sacramento'
-@import 'https://fonts.googleapis.com/css?family=Dosis|Josefin+Sans'
+// @import 'https://fonts.googleapis.com/css?family=Muli|Sacramento|Josefin+Sans'
+// @import 'https://fonts.googleapis.com/css?family=Sacramento'
+// @import 'https://fonts.googleapis.com/css?family=Dosis|Josefin+Sans'
 
 //general UI element stylings
 // @import "../animate.css"
+
+$bubble-size: 100px
+
+@font-face
+	font-family: 'Josefin Sans'
+	src: url('../fonts/Josefin_Sans/JosefinSans-Regular.ttf')
+	font-weight: normal
+
+@font-face
+	font-family: 'Muli'
+	src: url('../fonts/Muli/Muli-Regular.ttf')
+	font-weight: normal
+
+@font-face
+	font-family: 'Sacramento'
+	src: url('../fonts/Sacramento/Sacramento-Regular.ttf')
+	font-weight: normal
+	font-style: cursive
+
 @import "./nav-menu"
 @import "./carousel"
 @import "./book-btn"
@@ -12,56 +31,73 @@ html,
 body,
 h1,
 h2,
-h3
-	margin: 0
+h3,
+h5
 	padding: 0
+	margin: 0
+
+html
+	font-family: 'Josefin Sans', sans-serif
+
+h1,
+h2,
+h3,
+h4,
+h5
 	font-family: 'Muli', sans-serif
 
 p
-	margin: 0 10px
 	font-family: 'Josefin Sans', sans-serif
+	line-height: 22px
+	text-align: justify
+	hyphens: auto
 
 section
-	min-height: 100vh
+	// min-height: 100vh
+
 	position: relative
+	z-index: 0
+	padding-bottom: 100px
 
 
 
 .theme
-	z-index: 1	
+	z-index: 1
+
 	&--blue
 		background: #BDE8F7 repeating-linear-gradient(-90deg, rgba(#DCF7FF, 0.5) ,rgba(#DCF7FF, 0.5) 5px, #BDE8F7 0, #BDE8F7 40px)
 			size: 20px 20px
 
 	&--eggshell
+		background: #EBEBEB
 
-			
 	&:before
 		content: ''
 		display: block
 		position: absolute
+		left: 0
 		background: inherit
 		height: calc(100% + 20vh)
 		width: 100%
-	&--blue:before	
+		z-index: -1
+	&--blue:before
 		transform-origin: top right
 		transform: skewY(15deg)
 		border-top: 5px solid rgba(#fff, 0.5)
 		box-shadow: 0 0 30px rgba(#000, 0.6)
-		z-index: -1
-		@media(min-width: 430px)
-			transform: skewY(8deg)
-		@media(min-width: 770px)
-			transform: skewY(5deg)
 
 	&--eggshell:before
+		transform-origin: top left
+		transform: skewY(-15deg)
+		border-top: 5px solid rgba(#fff, 0.5)
+		box-shadow: 0 0 30px rgba(#000, 0.6)
 
 
 .section-title
 	color: rgba(#244652, 0.5)
-	margin-bottom: -15%
-	margin-top: 30%
-	padding: 0 20px
+	padding: 30px 20px
+		bottom: 0px
+	margin-bottom: 20px
 	font-size: 58px
 	font-weight: 300
 	letter-spacing: -4px
@@ -69,20 +105,45 @@ section
 
 
 .section-panel
-	width: 100%
-	margin: 0 20px
-	padding: 20px
+	position: relative
+	max-width: 670px
+	box-sizing: border-box
+	margin: 0 0 30px 0
+	padding: 10px
+	border-radius: 3px
 	display: flex
+	flex-direction: column
+	flex-wrap: wrap
+	box-shadow: 0 5px 15px rgba(#000, 0.45)
 
+	&--gold
+		background: linear-gradient(180deg, #F2F3EC 50%, #A9AA9F 100%)
+
+	&--blue
+		background: linear-gradient(180deg, #E0F2F8 50%, #70A7BA 100%)
+		margin-left: auto
+
+
+.theme--eggshell .section-title
+	text-align: right
+
+
+.paragraph-wrapper
+	margin: 20px 0
+	padding: 0
+	&__outside
+		margin: 20px 10px
 
 
 // hero
 .hero
 	height: 120vh
+	padding-bottom: 0
 	// z-index: 0
-	background: 
-		image: linear-gradient(180deg, rgba(#02C0FF,0.7) 0%, rgba(#fff, 0.2) 10%, rgba(#fff, 0.95) 100%), url('../img/hero_bg.jpg') 
+	background:
+		image: linear-gradient(180deg, rgba(#02C0FF,0.7) 0%, rgba(#fff, 0.2) 10%, rgba(#fff, 0.95) 100%), url('../img/hero_bg.jpg')
 		size: cover
+	opacity: 0.7
 
 	&__title,
 	&__subtitle,
@@ -103,41 +164,274 @@ section
 		margin-top: 10px
 
 
+.house
+	.section-panel
+		flex-direction: column
 
 
-// // 
-// .house
-// 	background: #BDE8F7 repeating-linear-gradient(-90deg, rgba(#DCF7FF, 0.5) ,rgba(#DCF7FF, 0.5) 5px, #BDE8F7 0, #BDE8F7 40px)
-// 		size: 20px 20px
-// 	z-index: 1
+.area
+	z-index: 50
 
-// .house:before
-// 	content: ''
-// 	display: block
-// 	position: absolute
-// 	background: inherit
-// 	backface-visibility: hidden
-// 	height: calc(100% + 20vh)
-// 	width: 100%
-// 	transform-origin: top right
-// 	transform: skewY(15deg)
-// 	border-top: 5px solid rgba(#fff, 0.5)
-// 	box-shadow: 0 0 30px rgba(#000, 0.6)
-// 	z-index: -1
-// 	@media(min-width: 430px)
-// 		transform: skewY(8deg)
-// 	@media(min-width: 770px)
-// 		transform: skewY(5deg)
-
-.area .section-title
-	font-size: 50px
+	.section-title
+		font-size: 50px
 
 
-.paragraphen-wrap
+.area-wrapper
+	display: flex
+	flex-direction: column
+
+	.section-panel
+		margin: 0 0 0 auto
+		flex: 2
+		width: 100%
+
+
+.area__description
+	min-height: 200px
+	width: 100%
+	transition: height 250ms
+
+
+.bubble__container
+	flex: 1
 	display: flex
 	flex-wrap: wrap
-	@media(min-width: 620px)
-		flex-wrap: nowrap
-		p 
-			width: 50%		
+	justify-content: space-around
+	padding: 10px
 
+
+.bubble
+	display: inline-block
+	text-align: center
+	width: $bubble-size
+	margin: 5px
+	&__img
+		width: $bubble-size
+		height: $bubble-size
+		transform: scale(1)
+		transition: all 150ms ease-in-out
+		border-radius: 50%
+		box-shadow: 0 5px 15px rgba(#000, 0.45)
+		background:
+			size: cover
+	&__descr
+		margin-top: 10px
+	&.is-selected
+		.bubble__img
+			transform: scale(1.15)
+			box-shadow: 0 5px 15px rgba(#BB5F6C, 0.45)
+
+
+.connection
+	z-index: 100
+	.section-title::before
+		content: ''
+		display: block
+		position: absolute
+		left: 45%
+		top: -10px
+		width: 150px
+		height: 150px
+		background:
+			image: url('../img/plane.svg')
+			size: contain
+			repeat: no-repeat
+		opacity: 0.5
+
+.contact
+	z-index: 150
+	.section-title::before
+		content: ''
+		display: block
+		position: absolute
+		right: 67%
+		top: 15px
+		width: 120px
+		height: 120px
+		background:
+			image: url('../img/mail.svg')
+			size: contain
+			repeat: no-repeat
+		opacity: 0.3
+		transform: rotate(-15deg)
+
+	.section-panel
+		padding-top: 20px
+
+form
+
+input,
+textarea
+	display: block
+	box-sizing: border-box
+	width: 100%
+	border:
+		style: dotted
+		color: black
+		width: 1px
+		radius: 0px
+	box-shadow: none
+	font-size: 18px
+	margin-bottom: 20px
+
+label
+	font-size: 24px
+	font-weight: 100
+	margin-bottom: 5px
+
+
+.footer
+	min-height: 50px
+	height: 120px
+	padding: 20px
+	background: linear-gradient(1800deg, #385E65 0%, #385E65 50%, #5F9AA6 100%)
+	text-align: center
+	z-index: 200
+
+
+.ap-logo
+	display: inline-block
+	height: 18px
+	width: 18px
+
+
+
+/* BREAK POINTS */
+
+@media(min-width: 420px)
+	.section-panel
+		padding: 20px
+		margin: 0 20px 30px 20px
+		&--blue
+			margin-left: auto
+
+
+	.area-wrapper
+		margin: 0 20px 30px 20px
+
+
+	.contact
+		.section-title::before
+			right: 67%
+			top: 15px
+			width: 130px
+			height: 130px
+			transform: rotate(-15deg)
+
+	.connection
+		.section-title::before
+			left: 45%
+			top: 0px
+			width: 220px
+			height: 220px
+
+@media(min-width: 430px)
+	.theme
+		&--blue:before
+			transform: skewY(8deg)
+
+		&--eggshell:before
+			transform: skewY(-8deg)
+
+
+@media(min-width: 520px)
+	.section-title
+		font-size: 86px
+
+
+	.house
+		.section-panel
+			flex-direction: row
+			&__tile
+				flex-basis: 50%
+				flex-grow: 1
+				flex-shrink: 0
+				&:first-child
+					flex-basis: 100%
+
+
+	.contact
+		.section-title::before
+			right: 67%
+			top: 0px
+			width: 145px
+			height: 145px
+			transform: rotate(-15deg)
+
+
+
+@media(min-width: 760px)
+	.theme
+		&--blue:before
+			transform: skewY(5deg)
+
+		&--eggshell:before
+			transform: skewY(-5deg)
+
+
+	.area-wrapper
+		flex-direction: row
+		// align-items: flex-start
+
+
+	.bubble__container
+		order: -1
+
+
+@media(min-width: 860px)
+	.contact
+		.section-title::before
+			right: 60%
+			top: 150px
+			width: 350px
+			height: 350px
+			transform: rotate(-25deg)
+
+	.connection
+		.section-title::before
+			left: 45%
+			top: 150px
+			width: 500px
+			height: 500px
+
+@media(min-width: 1020px)
+
+	.theme
+
+		&--blue:before
+			transform: skewY(3deg)
+
+		&--eggshell:before
+			transform: skewY(-3deg)
+
+@media(min-width: 1200px)
+	.theme
+		padding-right: 250px
+
+
+	.section-panel
+		// max-width: 860px
+
+
+	.contact
+		.section-title::before
+			right: 60%
+			top: 150px
+			width: 500px
+			height: 500px
+			transform: rotate(-25deg)
+
+	.connection
+		.section-title::before
+			left: 550px
+			top: 150px
+			width: 650px
+			height: 650px
+
+
+@media(min-width: 1440px)
+	.theme
+		padding-left: 120px
+
+	.bubble__container
+		flex-direction: column

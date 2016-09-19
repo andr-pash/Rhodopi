@@ -1,23 +1,45 @@
-.carousel-wrap
-	display: flex
-	flex-wrap: wrap
-	justify-content: space-around
-
-	@media(min-width: 620px)
-		flex-wrap: nowrap
-
 .carousel
-	padding: 30px 0 20px 0
-	height: 55vw
-	max-height: 300px
-	width: 80vw
-	max-width: 350px
-	flex-grow: 1
-	// position: relative
-	// display: inline-block
-	// overflow: hidden
-	perspective: 200px
-	perspective-origin: 50% 40%
+	min-height: 250px
+	min-width: 280px
+	max-height: 500px
+	width: 100%
+	height: 40vh
+	margin-bottom: 20px
+	position: relative
+	border:
+		style: solid
+		width: 1px
+		color: #81827E
+	box-shadow: inset 0 0 10px #81827E
+	box-sizing: border-box
+
+#carousel1,
+#carousel2,
+#carousel3
+	// border: none
+	// box-shadow: none
+
+	&:after
+		content: ''
+		display: block
+		margin-top: 10px
+		height: 1px
+		width: 100%
+		background: linear-gradient(90deg, #244652 0, rgba(#244652, 0) 100%)
+
+.carousel__main
+	opacity: 1
+	height: 100%
+	width: 100%
+	transition: opacity 0.2s linear
+	background:
+		size: cover
+		position: 50% 50%
+
+
+// .carousel__photo
+// // 	width: 20vw
+// // 	height: 20vw
 
 .carousel__btn
 	position: absolute
@@ -35,51 +57,42 @@
 	&--prev
 		background:
 			image: url('../img/prev.png')
-		left: 10%	
+		left: 1%
 	&--next
 		background:
 			image: url('../img/next.png')
-		right: 10%			
+		right: 1%
 
-
-.carousel__item
-	background:
-		repeat: no-repeat
-		size: cover
-	position: absolute
-	display: block
-	height: 70%
-	width: 70%
-	box-sizing: border-box
-	border:
-		radius: 5px
-	box-shadow:  0px 0px 0px 5px rgba(#fff, 0.65), 0px 5px 10px 5px rgba(#000, 0.8)
-	left: 0
-	right: 0
-	margin: 0 auto
-	transform: translate3d(0, 0, 0) scale3d(1,1,1) rotate3d(0,0,0, 30deg)
-	z-index: 1	
-	transition: all 0.35s ease-in-out
-
-	&.carousel__prev
-		transform: translate3d(-10%, -5%, 0) rotateZ(5deg)
-	&.carousel__next
-		transform: translate3d(10%, 5%, 0) rotateZ(-2deg)
-	&.carousel__active
-		z-index: 2
-		// box-shadow: 0 5px 15px rgba(#000, 0.8)
-		opacity: 1
-	&.carousel__hidden
-		transform: translate3d(0, 0, 0) 
-		opacity: 0
+.newPic-enter
+	opacity: 0.01
 
 .house-map__container
-	width: 90vw	
-	max-width: 300px
-	flex-grow: 0
 
-// #house-map
-// 	margin: 0 auto
+.house-map
+	transform-origin: center
+	transform: rotate(90deg)
+	width: 100%
+	height: 100%
+	max-height: 400px
+	max-width: 400px
+	@media(min-width: 520px)
+		transform: rotate(0deg)
+	// height: 100%
+	// min-width: 150px
+	// min-height: 150px
+
+.house-map__sub
+	color: white
+	text-align: center
+
+	&:after
+		content: ''
+		display: block
+		width: 60%
+		margin: 10px auto
+		height: 1px
+		background: white
+		box-shadow: 0 0 10px 2px #fff
 
 .click-target
 	fill: white
@@ -89,14 +102,3 @@
 	stroke: #E5F07C
 	stroke-width: 10
 	// filter: drop-shadow(0 0 15px rgba(#E5F07C, 0.5))
-
-
-
-
-
- 
-
-
-
-
-

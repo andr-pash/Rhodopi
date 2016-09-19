@@ -1,3 +1,62 @@
+const imagesHouse = {
+        bed1: ['./img/house/Slice1.png'],
+        bed2: ['./img/house/Slice7.png'],
+        bed3: ['./img/house/Slice6.png'],
+        living: ['./img/house/Slice5.png'],
+        bath: ['./img/house/Slice4.png'],
+        frontTerr: ['./img/house/Slice3.png'],
+        backTerr: ['./img/house/Slice2.png']
+    };
+
+
+const imagesArea = {
+        komotini: ['../img/area/Komotini.jpg'],
+        rhodopen: ['../img/area/Rodopen.jpg'],
+        birds: ['../img/area/Birds.jpg'],
+        nature: ['../img/area/Nature.jpg'],
+        beaches: ['../img/area/Beaches.jpg'],
+        samothraki: ['../img/area/Samothraki.jpg'],
+}
+
+
+
+
+
+
+
+const descrArea = {
+        komotini: {
+            title: 'Komotini',
+            description: "'Pabst messenger bag tumeric iceland bushwick cray. Venmo squid keffiyeh 3 wolf moon, franzen post-ironic farm-to-table pabst you probably haven't heard of them yr tumblr occupy. Heirloom succulents umami single-origin coffee, aesthetic before they sold out distillery shoreditch. Twee farm-to-table keytar, poutine austin man bun synth mumblecore disrupt +1 vegan tousled. Church-key keffiyeh distillery literally, roof party occupy food truck. Retro forage crucifix photo booth. Gochujang tofu authentic, sriracha unicorn williamsburg offal thundercats craft beer 8-bit everyday carry succulents snackwave.'"
+            },
+        rhodopen: {
+            title: 'Rhodopen',
+            description: "'Quinoa try-hard celiac, raclette 3 wolf moon put a bird on it keffiyeh tote bag salvia plaid banjo. Drinking vinegar swag activated charcoal flannel, viral listicle marfa. Actually keffiyeh swag, four dollar toast freegan heirloom meh irony williamsburg sartorial. Tote bag butcher meh, brunch authentic art party small batch gochujang. Brunch chia meditation, austin photo booth paleo celiac meggings kale chips letterpress. Meggings fap try-hard, single-origin coffee church-key waistcoat pabst. Post-ironic VHS pinterest freegan.'"
+        },
+        birds: {
+            title: 'Birds',
+            description: 'Vape disrupt typewriter, everyday carry jianbing master cleanse cardigan neutra. Hammock mustache four dollar toast crucifix. Typewriter trust fund single-origin coffee, schlitz biodiesel scenester 8-bit craft beer intelligentsia live-edge banh mi mumblecore messenger bag semiotics aesthetic. Meggings wolf cliche iPhone cred, shabby chic kogi vape air plant typewriter fap. Enamel pin la croix woke asymmetrical, PBR&B semiotics mumblecore meggings organic twee. Chambray kitsch meditation 3 wolf moon affogato, banjo neutra 8-bit. Normcore irony mixtape, live-edge cray tofu tacos hella you probably haven\'t heard of them butcher trust fund meditation hashtag succulents kogi.'
+        },
+        nature: {
+            title: 'Nature',
+            description: "Vape disrupt typewriter, everyday carry jianbing master cleanse cardigan neutra. Hammock mustache four dollar toast crucifix. Typewriter trust fund single-origin coffee, schlitz biodiesel scenester 8-bit craft beer intelligentsia live-edge banh mi mumblecore messenger bag semiotics aesthetic. Meggings wolf cliche iPhone cred, shabby chic kogi vape air plant typewriter fap. Enamel pin la croix woke asymmetrical, PBR&B semiotics mumblecore meggings organic twee. Chambray kitsch meditation 3 wolf moon affogato, banjo neutra 8-bit. Normcore irony mixtape, live-edge cray tofu tacos hella you probably haven\'t heard of them butcher trust fund meditation hashtag succulents kogi."
+        },
+        beaches: {
+            title: 'Beaches',
+            description: "Vape disrupt typewriter, everyday carry jianbing master cleanse cardigan neutra. Hammock mustache four dollar toast crucifix. Typewriter trust fund single-origin coffee, schlitz biodiesel scenester 8-bit craft beer intelligentsia live-edge banh mi mumblecore messenger bag semiotics aesthetic. Meggings wolf cliche iPhone cred, shabby chic kogi vape air plant typewriter fap. Enamel pin la croix woke asymmetrical, PBR&B semiotics mumblecore meggings organic twee. Chambray kitsch meditation 3 wolf moon affogato, banjo neutra 8-bit. Normcore irony mixtape, live-edge cray tofu tacos hella you probably haven\'t heard of them butcher trust fund meditation hashtag succulents kogi."
+        },
+        samothraki: {
+            title: 'Samothraki',
+            description: "Vape disrupt typewriter, everyday carry jianbing master cleanse cardigan neutra. Hammock mustache four dollar toast crucifix. Typewriter trust fund single-origin coffee, schlitz biodiesel scenester 8-bit craft beer intelligentsia live-edge banh mi mumblecore messenger bag semiotics aesthetic. Meggings wolf cliche iPhone cred, shabby chic kogi vape air plant typewriter fap. Enamel pin la croix woke asymmetrical, PBR&B semiotics mumblecore meggings organic twee. Chambray kitsch meditation 3 wolf moon affogato, banjo neutra 8-bit. Normcore irony mixtape, live-edge cray tofu tacos hella you probably haven\'t heard of them butcher trust fund meditation hashtag succulents kogi."
+        }
+}
+
+
+const imagesCon = [
+        '../img/connection/gr-map.tiff'
+]
+
+
 $('document').ready(function() {
 
 
@@ -26,132 +85,172 @@ $('document').ready(function() {
         let ul = $('.nav-menu__list').position()
         let active = $('.active').position()
         let newPos = ul.top + active.top - 4
-        console.log(ul, active, newPos)
         $('.nav-menu__pointer').css('top', newPos)
     }
 
 
-    // shrink booking button on scroll
+    // APPEARANCE BOOKING BUTTON ON SCROLL
     $(window).scroll(function() {
-        var offSet = window.pageYOffset
+        let offSet = window.pageYOffset
+        let distanceContact = $('.contact').offset()
+        let distanceBtn = $('.btn__book').offset()
+        let diff = distanceBtn.top - distanceContact.top
+
+
+        // make small after fold
         if (offSet > 300) {
-            $('.btn-book').addClass('small')
+            $('.btn__book').addClass('small')
         }
         if (offSet < 300) {
-            $('.btn-book').removeClass('small')
+            $('.btn__book').removeClass('small')
         }
+
+
+        //hide when in contact area
+        if (diff > 0) {
+          $('.btn__book').addClass('fade-out')
+        }
+
+        if (diff < 0) {
+          $('.btn__book').removeClass('fade-out')
+        }
+
     })
 
 
 
+    let posHouse = 0
+    let posArea = 0
+    let posCon = 0
+    let currentRoom = 'living'
+    let currentArea = 'rhodopen'
 
-    var imgSrc = ['./img/carousel/Slice1.png', './img/carousel/Slice2.png', './img/carousel/Slice3.png', './img/carousel/Slice4.png', './img/carousel/Slice5.png', './img/carousel/Slice6.png', './img/carousel/Slice7.png'];
 
-    var carouselClasses = ['carousel__prev', 'carousel__active', 'carousel__next', 'carousel__hidden'];
 
-    var carouselNodes = imgSrc.map(function(el, i) {
+    // fill first carousel
+    $('#carousel1 .carousel__main').css('background-image', `url(${imagesHouse[currentRoom][0]})`)
 
-        var index = i < carouselClasses.length ? i : 3
-        var url = 'url(' + el + ')'
 
-        return $('<div></div>').appendTo($('#carousel .carousel__list')).addClass('carousel__item').addClass(carouselClasses[index]).css('background-image', url);
-    });
-
-    var pos = 0
-
-    $('.carousel__prev').on('click', function() {
-
-        $(carouselNodes).each(function(i) {
-
-            var index = i - pos > -1 ? i - pos : i - pos + imgSrc.length
-            var newClass = index - 1 > -1 ? index - 1 : index - 1 + carouselClasses.length
-
-            if (index > -1 && index < carouselClasses.length) {
-                $(this).removeClass(carouselClasses[index])
-                $(this).addClass(carouselClasses[newClass])
-            }
-        })
-
-        pos++
-        if (pos === imgSrc.length) {
-            pos = 0
+    $('#carousel1 .carousel__btn--prev').click(function(){
+        posHouse--
+        if(posHouse < 0){
+            posHouse = imagesHouse[currentRoom].length - 1
         }
+        let url = `url(${imagesHouse[currentRoom][posHouse]})`
+        $('#carousel1 .carousel__main').css('background-image', url)
     })
 
-    $('.carousel__next').on('click', function() {
-
-        console.log('shit')
-        $(carouselNodes).each(function(i) {
-
-            var index = i - pos
-
-            if (index < -1) {
-                index += imgSrc.length
-            }
-
-            if (index > carouselClasses.length) {
-                index -= imgSrc.length
-            }
-
-            var newClass = index + 1 > -1 ? index + 1 : index + 1 + carouselClasses.length
-
-            if (index > -2 && index < 3) {
-                $(this).removeClass(carouselClasses[index < 0 ? index + carouselClasses.length : index])
-                $(this).addClass(carouselClasses[newClass])
-            }
-        })
-
-        pos--
-        if (pos < 0) {
-            pos = imgSrc.length - 1
+    $('#carousel1 .carousel__btn--next').click(function(){
+        posHouse++
+        if(posHouse === imagesHouse[currentRoom].length){
+            posHouse = 0
         }
+        let url = `url(${imagesHouse[currentRoom][posHouse]})`
+        $('#carousel1 .carousel__main').css('background-image', url)
+    })
+
+    $('.click-target').click(function(){
+        let room = this.id
+        currentRoom = room
+        let target = $('#carousel1 .carousel__main')
+        target
+            .addClass('newPic-enter')
+
+        setTimeout(function(){
+            target
+                .css('background-image', `url(${imagesHouse[currentRoom][0]})`)
+                .removeClass('newPic-enter')
+        }, 200)
+
+    })
+
+
+    // Area Carousel Logic
+
+    $('#carousel2 .carousel__main').css('background-image', `url(${imagesArea[currentArea][0]})`)
+
+
+    $('#carousel2 .carousel__btn--prev').click(function(){
+        posArea--
+        if(posArea < 0){
+            posArea = imagesArea[currentArea].length - 1
+        }
+        let url = `url(${imagesArea[currentArea][posArea]})`
+        $('#carousel2 .carousel__main').css('background-image', url)
+    })
+
+    $('#carousel2 .carousel__btn--next').click(function(){
+        posArea++
+        if(posArea === imagesArea[currentArea].length){
+            posArea = 0
+        }
+        let url = `url(${imagesArea[currentArea][posArea]})`
+        $('#carousel2 .carousel__main').css('background-image', url)
+    })
+
+
+
+    // Area Bubbles
+
+
+    Object.keys(descrArea).forEach( (key, i) => {
+        let title = descrArea[key].title
+        let url = `url(${imagesArea[key][0]})`
+        let newBubble = `
+            <div class="bubble" data-key=${key}>
+                <div class="bubble__img" style="background-image:${url}">
+                </div>
+                <div class="bubble__descr">
+                    ${title}
+                </div>
+            </div>`
+        $(newBubble).appendTo('#bubble__container')
+
+    })
+
+    $('.bubble').click(function(){
+        $('.bubble').removeClass('is-selected')
+        $(this).addClass('is-selected')
+        let key = $(this).data('key')
+        let url = `url(${imagesArea[key][0]})`
+        let title = descrArea[key].title
+        let descr = descrArea[key].description
+        let newDescr = `
+                    <h5>${title}</h5>
+                    <div class="paragraphen-wrap">
+                        <p>${descr}</p>
+                    </div>
+                `
+        $('#carousel2 .carousel__main').css('background-image', url)
+
+        $('.area__description').html(newDescr)
+    })
+
+
+
+    // Connection Carousel Logic
+    $('#carousel3 .carousel__main').css('background-image', `url(${imagesCon[0]})`)
+
+
+    $('#carousel3 .carousel__btn--prev').click(function(){
+        posCon--
+        if(posCon < 0){
+            posCon = imagesCon[currentArea].length - 1
+        }
+        let url = `url(${imagesCon[posCon]})`
+        $('#carousel3 .carousel__main').css('background-image', url)
+    })
+
+    $('#carousel3 .carousel__btn--next').click(function(){
+        posCon++
+        if(posCon === imagesCon.length){
+            posCon = 0
+        }
+        let url = `url(${imagesCon[posCon]})`
+        $('#carousel3 .carousel__main').css('background-image', url)
     })
 
 
     setPointer()
 
 })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-$(window).load(function() {
-
-    $('.carousel__item').draggable({
-        revert: true,
-        drag: function() {
-            console.log('drag')
-        }
-
-    })
-
-    var svgDoc = document.getElementById('house-map__container').contentDocument
-
-    var targets = svgDoc.getElementsByClassName('click-target')
-
-    targets.map = Array.prototype.map
-
-    targets.map(function(el) {
-
-        el.addEventListener('click', function() {
-            var rect = Snap(this)
-            rect.attr({
-                fill: '#E5F07C',
-                fillOpacity: .5
-            });
-        });
-    });
-});
