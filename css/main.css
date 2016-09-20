@@ -480,6 +480,7 @@ section {
   width: 100px;
   margin: 5px; }
   .bubble__img {
+    position: relative;
     width: 100px;
     height: 100px;
     -webkit-transform: scale(1);
@@ -489,13 +490,25 @@ section {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.45);
     box-sizing: border-box;
     background-size: cover; }
+    .bubble__img:after {
+      content: "";
+      display: block;
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      z-index: -1;
+      border: 5px solid rgba(238, 192, 115, 0.5);
+      box-sizing: border-box;
+      opacity: 0;
+      transition: opacity 300ms; }
   .bubble__descr {
     margin-top: 10px; }
   .bubble.is-selected .bubble__img {
     -webkit-transform: scale(1.15);
-    transform: scale(1.15);
-    border: 2px solid #BB5F6C;
-    box-shadow: 0 5px 15px rgba(187, 95, 108, 0.45); }
+    transform: scale(1.15); }
+    .bubble.is-selected .bubble__img:after {
+      opacity: 1; }
 
 .connection {
   z-index: 100; }

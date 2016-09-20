@@ -205,6 +205,7 @@ section
 	width: $bubble-size
 	margin: 5px
 	&__img
+		position: relative
 		width: $bubble-size
 		height: $bubble-size
 		transform: scale(1)
@@ -214,13 +215,29 @@ section
 		box-sizing: border-box
 		background:
 			size: cover
+		&:after
+			content: ''
+			display: block
+			position: absolute
+			width: $bubble-size
+			height: $bubble-size
+			border-radius: 50%
+			z-index: -1
+			border: 5px solid rgba(238, 192, 115, 0.5)
+			box-sizing: border-box
+			opacity: 0
+			transition: opacity 300ms
 	&__descr
 		margin-top: 10px
+
+
 	&.is-selected
 		.bubble__img
 			transform: scale(1.15)
-			border: 2px solid #BB5F6C
-			box-shadow: 0 5px 15px rgba(#BB5F6C, 0.45)
+			&:after
+				opacity: 1
+
+
 
 
 .connection
