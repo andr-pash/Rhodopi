@@ -548,6 +548,33 @@ section {
   .contact .section-panel {
     padding-top: 20px; }
 
+.contact-form {
+  -webkit-transform-origin: center center;
+  transform-origin: center center;
+  transition: all 500ms;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden; }
+  .contact-form.submitted {
+    -webkit-transform: rotateX(180deg);
+    transform: rotateX(180deg);
+    position: relative; }
+
+.submit-panel {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background: #61ad79;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transform-origin: center center;
+  transform-origin: center center;
+  -webkit-transform: rotateX(-180deg);
+  transform: rotateX(-180deg);
+  transition: all 500ms; }
+  .submit-panel.submitted {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg); }
+
 input,
 textarea {
   display: block;
