@@ -77,27 +77,33 @@ $('document').ready(function () {
     }
 
     // soft scroll
-    $(function () {
-        $('a[href*="#"]:not([href="#"])').click(function () {
-            if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
-                var target = $(this.hash);
-                target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
-                if (target.length) {
-                    $('html, body').animate({
-                        scrollTop: target.offset().top
-                    }, 700);
-                    return false;
-                }
+    $('a[href*="#"]:not([href="#"])').click(function () {
+        if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+            var target = $(this.hash);
+            target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+            if (target.length) {
+                $('html, body').animate({
+                    scrollTop: target.offset().top
+                }, 700);
+                return false;
             }
-        });
+        }
     });
 
-    // APPEARANCE BOOKING BUTTON ON SCROLL
+    // positions of titles to update pointer
+    var anchors = $('section');
+    var anchorPostions = [];
+    $.each(anchors, function (key, value) {
+        anchorPostions.push($(value).offset().top);
+    });
+    var navMenuItems = $('.nav-menu__item');
+
+    // APPEARANCE BOOKING BUTTON ON SCROLL & UPDATE POINTER POSITION
     $(window).scroll(function () {
         var offSet = window.pageYOffset;
         var distanceContact = $('.contact').offset();
         var distanceBtn = $('.btn__book').offset();
-        var diff = distanceBtn.top - distanceContact.top;
+        var contactDistanceDiff = distanceBtn.top - distanceContact.top;
 
         // make small after fold
         if (offSet > 300) {
@@ -108,12 +114,22 @@ $('document').ready(function () {
         }
 
         //hide when in contact area
-        if (diff > 0) {
+        if (contactDistanceDiff > 0) {
             $('.btn__book').addClass('fade-out');
         }
 
-        if (diff < 0) {
+        if (contactDistanceDiff < 0) {
             $('.btn__book').removeClass('fade-out');
+        }
+
+        // update pointer position on scroll
+        for (var i = anchorPostions.length; i > -1; i--) {
+            if (offSet - anchorPostions[i] > -500) {
+                navMenuItems.removeClass('active');
+                $(navMenuItems[i]).addClass('active');
+                setPointer();
+                break;
+            }
         }
     });
 
@@ -149,7 +165,10 @@ $('document').ready(function () {
         var room = this.id;
         currentRoom = room;
         var target = $('#carousel1 .carousel__main');
+        var descr = $('#carousel1 .carousel__overlay h4');
         target.addClass('newPic-enter');
+
+        descr.html(room);
 
         setTimeout(function () {
             target.css('background-image', 'url(' + imagesHouse[currentRoom][0] + ')').removeClass('newPic-enter');
@@ -159,7 +178,7 @@ $('document').ready(function () {
     // Area Carousel Logic
 
     $('#carousel2 .carousel__main').css('background-image', 'url(' + imagesArea[currentArea][0] + ')');
-    $('#');
+    setAreaDescr(currentArea);
 
     $('#carousel2 .carousel__btn--prev').click(function () {
         posArea--;
@@ -183,22 +202,27 @@ $('document').ready(function () {
 
     Object.keys(descrArea).forEach(function (key, i) {
         var title = descrArea[key].title;
+        var isSelected = key === currentArea ? ' is-selected' : '';
         var url = 'url(' + imagesArea[key][0] + ')';
-        var newBubble = '\n            <div class="bubble" data-key=' + key + '>\n                <div class="bubble__img" style="background-image:' + url + '">\n                </div>\n                <div class="bubble__descr">\n                    ' + title + '\n                </div>\n            </div>';
+        var newBubble = '\n            <div class="bubble' + isSelected + '" data-key=' + key + '>\n                <div class="bubble__img" style="background-image:' + url + '">\n                </div>\n                <div class="bubble__descr">\n                    ' + title + '\n                </div>\n            </div>';
         $(newBubble).appendTo('#bubble__container');
     });
+
+    function setAreaDescr(name) {
+        var title = descrArea[name].title;
+        var descr = descrArea[name].description;
+        var newDescr = '\n                    <h5>' + title + '</h5>\n                    <div class="paragraphen-wrap">\n                        <p>' + descr + '</p>\n                    </div>\n                ';
+        $('.area__description').html(newDescr);
+    }
 
     $('.bubble').click(function () {
         $('.bubble').removeClass('is-selected');
         $(this).addClass('is-selected');
         var key = $(this).data('key');
+        currentArea = key;
         var url = 'url(' + imagesArea[key][0] + ')';
-        var title = descrArea[key].title;
-        var descr = descrArea[key].description;
-        var newDescr = '\n                    <h5>' + title + '</h5>\n                    <div class="paragraphen-wrap">\n                        <p>' + descr + '</p>\n                    </div>\n                ';
+        setAreaDescr(key);
         $('#carousel2 .carousel__main').css('background-image', url);
-
-        $('.area__description').html(newDescr);
     });
 
     // Connection Carousel Logic

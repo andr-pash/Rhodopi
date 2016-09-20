@@ -90,30 +90,35 @@ $('document').ready(function() {
 
 
     // soft scroll
-    $(function() {
-      $('a[href*="#"]:not([href="#"])').click(function() {
-        if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
-          var target = $(this.hash);
-          target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
-          if (target.length) {
-            $('html, body').animate({
-              scrollTop: target.offset().top
-            }, 700);
-            return false;
-          }
+    $('a[href*="#"]:not([href="#"])').click(function() {
+      if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+        var target = $(this.hash);
+        target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+        if (target.length) {
+          $('html, body').animate({
+            scrollTop: target.offset().top
+          }, 700);
+          return false;
         }
-      });
-    });
+      }
+    })
 
 
+    // positions of titles to update pointer
+    let anchors = $('section')
+    let anchorPostions = []
+    $.each(anchors, function(key, value){
+        anchorPostions.push($(value).offset().top)
+    })
+    let navMenuItems = $('.nav-menu__item')
 
-    // APPEARANCE BOOKING BUTTON ON SCROLL
+
+    // APPEARANCE BOOKING BUTTON ON SCROLL & UPDATE POINTER POSITION
     $(window).scroll(function() {
         let offSet = window.pageYOffset
         let distanceContact = $('.contact').offset()
         let distanceBtn = $('.btn__book').offset()
-        let diff = distanceBtn.top - distanceContact.top
-
+        let contactDistanceDiff = distanceBtn.top - distanceContact.top
 
         // make small after fold
         if (offSet > 300) {
@@ -125,14 +130,24 @@ $('document').ready(function() {
 
 
         //hide when in contact area
-        if (diff > 0) {
+        if (contactDistanceDiff > 0) {
           $('.btn__book').addClass('fade-out')
         }
 
-        if (diff < 0) {
+        if (contactDistanceDiff < 0) {
           $('.btn__book').removeClass('fade-out')
         }
 
+
+        // update pointer position on scroll
+        for(let i = anchorPostions.length; i > -1; i--){
+          if(offSet - anchorPostions[i] > -500){
+            navMenuItems.removeClass('active')
+            $(navMenuItems[i]).addClass('active')
+            setPointer()
+            break
+          }
+        }
     })
 
 
@@ -171,8 +186,11 @@ $('document').ready(function() {
         let room = this.id
         currentRoom = room
         let target = $('#carousel1 .carousel__main')
+        let descr = $('#carousel1 .carousel__overlay h4')
         target
             .addClass('newPic-enter')
+
+        descr.html(room)
 
         setTimeout(function(){
             target
@@ -186,7 +204,7 @@ $('document').ready(function() {
     // Area Carousel Logic
 
     $('#carousel2 .carousel__main').css('background-image', `url(${imagesArea[currentArea][0]})`)
-    $('#')
+    setAreaDescr(currentArea)
 
 
     $('#carousel2 .carousel__btn--prev').click(function(){
@@ -214,9 +232,10 @@ $('document').ready(function() {
 
     Object.keys(descrArea).forEach( (key, i) => {
         let title = descrArea[key].title
+        let isSelected = key === currentArea?' is-selected':''
         let url = `url(${imagesArea[key][0]})`
         let newBubble = `
-            <div class="bubble" data-key=${key}>
+            <div class="bubble${isSelected}" data-key=${key}>
                 <div class="bubble__img" style="background-image:${url}">
                 </div>
                 <div class="bubble__descr">
@@ -227,22 +246,29 @@ $('document').ready(function() {
 
     })
 
-    $('.bubble').click(function(){
-        $('.bubble').removeClass('is-selected')
-        $(this).addClass('is-selected')
-        let key = $(this).data('key')
-        let url = `url(${imagesArea[key][0]})`
-        let title = descrArea[key].title
-        let descr = descrArea[key].description
+    function setAreaDescr(name) {
+        let title = descrArea[name].title
+        let descr = descrArea[name].description
         let newDescr = `
                     <h5>${title}</h5>
                     <div class="paragraphen-wrap">
                         <p>${descr}</p>
                     </div>
                 `
+        $('.area__description').html(newDescr)
+    }
+
+
+    $('.bubble').click(function(){
+        $('.bubble').removeClass('is-selected')
+        $(this).addClass('is-selected')
+        let key = $(this).data('key')
+        currentArea = key
+        let url = `url(${imagesArea[key][0]})`
+        setAreaDescr(key)
         $('#carousel2 .carousel__main').css('background-image', url)
 
-        $('.area__description').html(newDescr)
+
     })
 
 
