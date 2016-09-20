@@ -160,7 +160,7 @@
   min-width: 280px;
   max-height: 500px;
   width: 100%;
-  height: 40vh;
+  height: 40vw;
   margin-bottom: 20px;
   position: relative;
   border-style: solid;
@@ -178,6 +178,18 @@
   height: 1px;
   width: 100%;
   background: linear-gradient(90deg, #244652 0, rgba(36, 70, 82, 0) 100%); }
+
+.carousel__overlay {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  background: linear-gradient(180deg, transparent 0%, transparent 70%, rgba(0, 0, 0, 0.5) 100%); }
+  .carousel__overlay h4 {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 20px;
+    position: absolute;
+    bottom: 0;
+    margin: 0 20px; }
 
 .carousel__main {
   opacity: 1;
@@ -326,7 +338,7 @@ p {
 section {
   position: relative;
   z-index: 0;
-  padding-bottom: 100px; }
+  padding: 0 0px 100px 0px; }
 
 .theme {
   z-index: 1; }
@@ -367,7 +379,7 @@ section {
   font-size: 58px;
   font-weight: 300;
   letter-spacing: -4px;
-  line-height: 36px; }
+  line-height: 46px; }
 
 .section-panel {
   position: relative;
@@ -478,12 +490,14 @@ section {
     transition: all 150ms ease-in-out;
     border-radius: 50%;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.45);
+    box-sizing: border-box;
     background-size: cover; }
   .bubble__descr {
     margin-top: 10px; }
   .bubble.is-selected .bubble__img {
     -webkit-transform: scale(1.15);
     transform: scale(1.15);
+    border: 2px solid #BB5F6C;
     box-shadow: 0 5px 15px rgba(187, 95, 108, 0.45); }
 
 .connection {
@@ -500,6 +514,10 @@ section {
     background-size: contain;
     background-repeat: no-repeat;
     opacity: 0.5; }
+
+.connection__map {
+  width: 100%;
+  height: 100%; }
 
 .contact {
   z-index: 150; }
@@ -553,9 +571,11 @@ label {
 
 /* BREAK POINTS */
 @media(min-width: 420px) {
+  section {
+    padding: 0 20px 100px 20px; }
+
   .section-panel {
-    padding: 20px;
-    margin: 0 20px 30px 20px; }
+    padding: 20px; }
     .section-panel--blue {
       margin-left: auto; }
 
