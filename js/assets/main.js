@@ -267,8 +267,6 @@ $('document').ready(function() {
         let url = `url(${imagesArea[key][0]})`
         setAreaDescr(key)
         $('#carousel2 .carousel__main').css('background-image', url)
-
-
     })
 
 
@@ -294,6 +292,31 @@ $('document').ready(function() {
         let url = `url(${imagesCon[posCon]})`
         $('#carousel3 .carousel__main').css('background-image', url)
     })
+
+
+    // $('.btn__submit').click(function(e){
+    //     e.preventDefault()
+    //
+    //     $('.contact-form').addClass('submitted')
+    //     $('.submit-panel').addClass('submitted')
+    //
+    //     let data = {
+    //       'name': $('input[name=name]').val(),
+    //       'email': $('input[name=email]').val(),
+    //       'betreff': $('input[name=subject]').val(),
+    //       'nachricht': $('textarea[name=message]').val()
+    //     }
+    //
+    //     $.ajax({
+    //         url: "https://formspree.io/andreas.pasha@googlemail.com",
+    //         method: "POST",
+    //         data: data,
+    //         dataType: "json"
+    //     }).done(function(d){
+    //       console.log(d)
+    //     })
+    // })
+
 
 
     setPointer()

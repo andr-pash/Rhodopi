@@ -280,7 +280,26 @@ section
 	.section-panel
 		padding-top: 20px
 
-form
+.contact-form
+	transform-origin: center center
+	transition: all 500ms
+	backface-visibility: hidden
+
+	&.submitted
+		transform: rotateX(180deg)
+		position: relative
+
+.submit-panel
+	position: absolute
+	height: 100%
+	width: 100%
+	background: rgb(97, 173, 121)
+	backface-visibility: hidden
+	transform-origin: center center
+	transform: rotateX(-180deg)
+	transition: all 500ms
+	&.submitted
+		transform: rotate(0deg)
 
 input,
 textarea
